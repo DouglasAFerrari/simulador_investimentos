@@ -1,0 +1,10 @@
+runtime: python
+env: flex
+
+entrypoint: gunicorn -b :$PORT src.main:app  # Ajuste o caminho para o seu ponto de entrada
+
+env_variables:
+  FLET_LOG_LEVEL: "info"  # Variáveis de ambiente, se necessário
+
+# Defina a classe de instância que atende a carga de trabalho:
+instance_class: F2  # Ajuste conforme a necessidade
