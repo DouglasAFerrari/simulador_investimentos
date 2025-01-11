@@ -1,9 +1,11 @@
 import flet as ft
 import locale
 
-# Configura o local para moeda brasileira
-locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
-
+try:
+    locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+except locale.Error:
+    print("Aviso: Locale 'pt_BR.UTF-8' não encontrado. Usando locale padrão.")
+    locale.setlocale(locale.LC_ALL, '')
 
 def calcular_investimento(capital_inicial, aporte_mensal, taxa_juros, periodo):
     """Calcula o montante final de um investimento usando juros compostos."""
@@ -112,5 +114,4 @@ def main(page: ft.Page):
         )
     )
 
-
-ft.app(target=main)
+ft.app(target=main, port=8080)
