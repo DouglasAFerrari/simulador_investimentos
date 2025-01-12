@@ -7,6 +7,7 @@ except locale.Error:
     print("Aviso: Locale 'pt_BR.UTF-8' não encontrado. Usando locale padrão.")
     locale.setlocale(locale.LC_ALL, '')
 
+
 def calcular_investimento(capital_inicial, aporte_mensal, taxa_juros, periodo):
     """Calcula o montante final de um investimento usando juros compostos."""
     capital_inicial = float(capital_inicial)
@@ -32,7 +33,7 @@ def main(page: ft.Page):
 
     # Título
     container_titulo = ft.Container(
-        padding=30,
+        padding=20,
         content=ft.Text(
             "Simulador de Investimentos",
             size=20,
@@ -40,8 +41,6 @@ def main(page: ft.Page):
             text_align=ft.TextAlign.CENTER,
         )
     )
-
-    espaco = ft.Container(padding=20)
 
     # Campos de entrada
     valor_capital_inicial = ft.TextField(
@@ -54,7 +53,7 @@ def main(page: ft.Page):
         label="Período (meses)", value="12", text_align=ft.TextAlign.CENTER)
 
     # ListView para exibir o resultado
-    lv = ft.ListView(spacing=10, padding=20, auto_scroll=True, height=400)
+    lv = ft.ListView(spacing=10, padding=10, auto_scroll=True, expand=True,)
 
     # Função para atualizar o resultado
     def atualizar_resultado(e):
@@ -97,7 +96,6 @@ def main(page: ft.Page):
                 ft.Column(
                     [
                         container_titulo,
-                        espaco,
                         valor_capital_inicial,
                         valor_aporte_mensal,
                         valor_taxa_juros,
@@ -105,13 +103,20 @@ def main(page: ft.Page):
                         calcular_btn,
                         lv,
                     ],
-                    alignment=ft.MainAxisAlignment.CENTER,
+                    # alinhamento itens coluna
                     horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                    # centraliza os itens no centro
+                    # alignment=ft.MainAxisAlignment.CENTER,
+                    expand=True,  # Expande a coluna para ocupar o espaço disponível
+                    # scroll=True,  # Permite a rolagem se o conteúdo for maior que a tela
+
                 ),
-                alignment=ft.alignment.center,
+                # alignment=ft.alignment.center,
+                expand=True,
             ),
             expand=True,
         )
     )
+
 
 ft.app(target=main, port=8080)
