@@ -1,6 +1,8 @@
 import flet as ft
 import locale
 
+print("funcionando")
+
 try:
     locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 except locale.Error:
@@ -117,6 +119,5 @@ def main(page: ft.Page):
             expand=True,
         )
     )
-
 
 ft.app(target=main, port=8080)

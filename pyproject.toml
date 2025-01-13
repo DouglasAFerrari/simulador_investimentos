@@ -19,10 +19,10 @@ org = "com.mycompany"
 product = "simulador_investimentos"
 
 # company name to display in about app dialogs
-company = "Flet"
+company = "Simulador de investimentos"
 
 # copyright text to display in about app dialogs
 copyright = "Copyright (C) 2024 by Flet"
 
 [tool.flet.app]
-path = ""
+path = "src"

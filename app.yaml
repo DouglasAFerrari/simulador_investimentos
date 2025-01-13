@@ -1,3 +1,13 @@
-runtime: python312
+runtime: python310
+
+env: standard
+
+instance_class: F1 
+
 entrypoint: python3 main.py
 
+handlers:
+  - url: /assets
+    static_dir: src/assets 
+  - url: /.*
+    script: auto
